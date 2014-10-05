@@ -1,0 +1,319 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Wellington CSS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav navigate="1" tabIndex="1"></nav>
+    <nav navigate="2" tabIndex="2"></nav>
+    <nav navigate="3" tabIndex="3"></nav>
+    <nav navigate="4" tabIndex="4"></nav>
+    <nav navigate="5" tabIndex="5"></nav>
+    <nav navigate="6" tabIndex="6"></nav>
+    <nav navigate="8" tabIndex="8"></nav>
+    <nav navigate="9" tabIndex="9"></nav>
+    <nav navigate="10" tabIndex="10"></nav>
+    <nav navigate="11" tabIndex="11"></nav>
+    <nav navigate="12" tabIndex="12"></nav>
+    <nav navigate="13" tabIndex="13"></nav>
+    <nav navigate="14" tabIndex="14"></nav>
+    <nav navigate="15" tabIndex="15"></nav>
+    <nav navigate="16" tabIndex="16"></nav>
+    <nav navigate="17" tabIndex="17"></nav>
+    <nav navigate="18" tabIndex="18"></nav>
+    <nav navigate="19" tabIndex="19"></nav>
+    <nav navigate="20" tabIndex="20"></nav>
+    <nav navigate="21" tabIndex="21"></nav>
+    <nav navigate="22" tabIndex="22"></nav>
+    <nav navigate="23" tabIndex="23"></nav>
+
+    <section slide="1" id="one">
+        <div class="slideHolder">
+            <h1>Things we do in JavaScript that can be done in CSS</h1>
+        </div>
+    </section>
+
+    <section slide="2" id="two">
+        <div class="slideHolder">
+            <h2>Intro</h2>
+            <ul>
+              <li>Essentially, we can use CSS to keep track of state</li>
+              <li>:checked and :target</li>
+              <li>~ general sibling selector</li>
+              <li>If you care about HTML structure then maybe some of this isn't for you</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="3" id="three">
+        <div class="slideHolder">
+            <h2>Disclaimer</h2>
+            <ul>
+                <li>Most of this is awesome</li>
+                <li>Some of it probably doesn't fit the bill for prod code</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="4" id="four">
+        <div class="slideHolder">
+            <h2>The humble checkbox</h2>
+            <ul>
+                <li>Two states: checked and unchecked</li>
+                <li>Used in conjunction with the general sibling selector ~</li>
+                <li>Input & label has to be written in a speciic way</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="5" id="five">
+        <div class="slideHolder">
+            <h2>The humble checkbox</h2>
+            <pre><code>
+  &lt;<span class="tag">input</span> <span class="htmlProperty">type</span>=&quot;<span class="string">checkbox</span>&quot; <span class="htmlProperty">id</span>=&quot;<span class="string">someId</span>&quot; /&gt;
+  &lt;<span class="tag">label</span> <span class="htmlProperty">for</span>=&quot;<span class="string">someId</span>&quot;&gt;Toggle content&lt;/<span class="tag">label</span>&gt;
+  &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>=&quot;<span class="string">doSomething</span>&quot;&gt;
+      <span class="comment">&lt;!-- Content --&gt;</span>
+  &lt;/<span class="tag">div</span>&gt;
+              </code></pre>
+          </div>
+    </section>
+
+    <section slide="6" id="six">
+        <div class="slideHolder">
+            <h2>The humble checkbox</h2>
+            <pre><code>
+  <span class="class">input</span> { <span class="cssProperty">display</span>: <span class="cssProperty">none</span>; }
+
+  <span class="class">.doSomething</span> {
+      <span class="comment">/* State one */</span>
+  }
+
+  <span class="class">input: checked</span> ~ <span class="class">.doSomething</span> {
+      <span class="comment">/* State two */</span>
+  }
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="7" id="seven">
+        <div class="slideHolder">
+            <h2>Showing/hiding content</h2>
+            <ul>
+                <li>Elements: checkbox + content holder</li>
+                <li>Toggle content holder visibility on check</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="8" id="eight">
+        <div class="slideHolder">
+            <h2>Showing/hiding content</h2>
+            <pre><code>
+  &lt;<span class="tag">input</span> <span class="htmlProperty">type</span>="<span class="string">checkbox</span>" <span class="htmlProperty">id</span>="<span class="string">showContent</span>" /&gt;
+  <span class="comment">&lt;!-- Content to always show --&gt;</span>
+  &lt;<span class="tag">label</span> <span class="htmlProperty">for</span>="<span class="string">showContent</span>"&gt;Toggle content&lt;/<span class="tag">label</span>&gt;
+  &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">showHideContent</span>"&gt;
+      <span class="comment">&lt;!-- Content to toggle --&gt;</span>
+  &lt;/<span class="tag">div</span>&gt;
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="9" id="nine">
+        <div class="slideHolder">
+            <h2>Showing/hiding content</h2>
+            <pre><code>
+  <span class="class">.showHideContent</span> {
+      <span class="cssProperty">display</span>: <span class="cssProperty">none</span>;
+  }
+
+  <span class="class">.showToggle:checked</span> ~<span class="class">.showHideContent</span> {
+      <span class="cssProperty">display</span>: <span class="cssProperty">block</span>;
+  }
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="10" id="ten">
+        <div class="slideHolder">
+            <h2>Off canvas menu</h2>
+            <ul>
+                <li>Elements: checkbox + sidebar holder + main content holder</li>
+                <li>Labels don't have to be directly beside their corresponding checkbox</li>
+                <li>Sidenote: you can also have more than one label per input if you need</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="11" id="eleven">
+        <div class="slideHolder">
+            <h2>Off canvas menu</h2>
+            <pre><code>
+  &lt;<span class="tag">input</span> <span class="htmlProperty">type</span>="<span class="string">checkbox</span>" <span class="htmlProperty">class</span>="<span class="string">menuToggle</span>" <span class="htmlProperty">id</span>="<span class="string">menuToggle</span>"/&gt;
+  &lt;<span class="tag">nav</span> <span class="htmlProperty">class</span>="<span class="string">nav</span>"&gt;
+      <span class="comment">&lt;!-- Nav items --&gt;</span>
+  &lt;/<span class="tag">nav</span>&gt;
+  &lt;<span class="tag">section</span>&gt;
+      &lt;<span class="tag">header</span>&gt;
+          &lt;<span class="tag">label</span> <span class="htmlProperty">for</span>="<span class="string">menuToggle</span>"&gt;&lt;/<span class="tag">label</span>&gt;
+      &lt;/<span class="tag">header</span>&gt;
+      <span class="comment">&lt;!-- Site content--&gt;</span>
+  &lt;/<span class="tag">section</span>&gt;
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="12" id="twelve">
+        <div class="slideHolder">
+            <h2>Off canvas menu</h2>
+            <pre><code>
+  <span class="class">.nav</span> {
+      <span class="cssProperty">transition</span>: <span class="cssProperty">width</span> <span class="value">0.5</span><span class="value">s</span> <span class="cssProperty">ease-in-out</span>;
+      <span class="cssProperty">width</span>: <span class="value">0</span>;
+  }
+
+  <span class="class">.menuToggle:checked</span> ~ <span class="class">.nav</span> {
+      <span class="cssProperty">width: <span class="value">300</span><span class="unit">px</span>;
+  }
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="13" id="thirteen">
+        <div class="slideHolder">
+            <h2>Parrallex</h2>
+            <ul>
+                <li>Not sure if these are even cool or not anymore (were they ever cool?)</li>
+                <li>Properties: perspective, translateZ, scale</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="14" id="fourteen">
+        <div class="slideHolder">
+            <h2>Parrallex</h2>
+            <pre><code>
+  &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">parallax</span>"&gt;
+      &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">parallaxGroup</span>"&gt;
+          &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">parallaxLayer</span> <span class="comment">/* layerModifier */</span>"&gt;
+              <span class="comment">&lt;!-- Content --&gt;</span>
+          &lt;/<span class="tag">div</span>&gt;
+      &lt;/<span class="tag">div</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+        </code></pre>
+    </div>
+    </section>
+
+    <section slide="15" id="fifteen">
+        <div class="slideHolder">
+            <h2>Parrallex</h2>
+            <ul>
+                <li>Perspective</li>
+                <li>Also requires transform-style: preserve-3d to keep children in 3d space</li>
+                <li>TranslateZ - sets where in space each layer sits</li>
+                <li>Scale - to deal with different depth elements being smaller/larger</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="16" id="sixteen">
+        <div class="slideHolder">
+            <h2>For non sibling related code</h2>
+            <ul>
+                <li>:target</li>
+                <li>Multiple states</li>
+                <li>Although it screws with browser history</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="17" id="seventeen">
+        <div class="slideHolder">
+            <h2>Modal</h2>
+            <ul>
+                <li>Simple visibility toggle</li>
+                <li>:target</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="18" id="eighteen">
+        <div class="slideHolder">
+            <h2>Modal</h2>
+            <pre><code>
+  .<span class="class">modal</span> {
+      <span class="cssProperty">opacity</span>: <span class="unit">0</span>;
+  }
+  .<span class="class">modal:target</span> {
+      <span class="cssProperty">opacity</span>: <span class="unit">1</span>;
+  }
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="19" id="nineteen">
+        <div class="slideHolder">
+            <h2>Modal</h2>
+            <pre><code>
+  &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">modal</span>" <span class="htmlProperty">id</span>="<span class="string">modal</span>"&gt;
+      &lt;<span class="tag">div</span> <span class="htmlProperty">class</span>="<span class="string">modalInner</span>"&gt;
+          &lt;<span class="tag">a</span> <span class="htmlProperty">class</span>="<span class="string">modalX</span>" <span class="htmlProperty">href</span>="<span class="string">#</span>"&gt;&lt;/<span class="tag">a</span>&gt;
+          <span class="comment">&lt;!-- Content --&gt;</span>
+      &lt;/<span class="tag">div</span>&gt;
+      &lt;<span class="tag">a</span> <span class="htmlProperty">href</span>="<span class="string">#</span>" <span class="htmlProperty">class</span>="<span class="string">modalClose</span>"&gt;&lt;/<span class="tag">a</span>&gt;
+  &lt;/<span class="tag">div</span>&gt;
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="20" id="twenty">
+        <div class="slideHolder">
+            <h2>Image gallery</h2>
+            <ul>
+                <li>Elements: anchor + image</li>
+                <li>:target rules for each image</li>
+            </ul>
+        </div>
+    </section>
+
+    <section slide="21" id="twentyone">
+        <div class="slideHolder">
+            <h2>Image gallery</h2>
+            <pre><code>
+  &lt;<span class="tag">a</span> <span class="htmlProperty">href</span>="<span class="string">#one</span>"&gt;1&lt;/<span class="tag">a</span>&gt;
+  &lt;<span class="tag">img</span> <span class="htmlProperty">src</span>="<span class="string">images/one.jpg</span>" <span class="htmlProperty">id</span>="<span class="string">one</span>" /&gt;
+  <span class="comment">&lt;!-- Repeat for each image --&gt;</span>
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="22" id="twentytwo">
+        <div class="slideHolder">
+        <h2>Image gallery</h2>
+            <pre><code>
+  <span class="class">img</span> {
+      <span class="cssProperty">opacity</span>: <span class="unit">0</span>;
+  }
+  <span class="class">img:target</span> {
+      <span class="cssProperty">opacity</span>: <span class="unit">1</span>;
+  }
+            </code></pre>
+        </div>
+    </section>
+
+    <section slide="23" id="twentythree">
+        <div class="slideHolder">
+            <h2>Tic tac toe</h2>
+            <ul>
+                <li>Hard to explain in bullet points so I'll just bring it up</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

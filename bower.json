@@ -1,0 +1,21 @@
+{
+  "name": "Wellington CSS - Slides",
+  "version": "0.0.1",
+  "authors": [
+    "James Macfie <james@macfie.co.nz>"
+  ],
+  "description": "Slides for the Wellington CSS meetup",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "http://jamesmacfie.com",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components"
+  ],
+  "dependencies": {
+
+  }
+}
